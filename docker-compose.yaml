@@ -24,7 +24,7 @@ x-airflow-common:
       condition: service_healthy
     postgres:
       condition: service_healthy
-    local-s3:
+    localstack:
       condition: service_healthy
 
 services:
