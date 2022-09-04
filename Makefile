@@ -9,9 +9,10 @@ AIRFLOW_CONSTRAINTS="https://raw.githubusercontent.com/apache/airflow/constraint
 
 start: ## start the dockerized airflow environment
 	docker compose up airflow-init
-	docker compose exec local-s3  aws s3 --endpoint-url http://localhost:4566 mb s3://ad-data
+	docker compose exec localstack  aws s3 --endpoint-url http://0.0.0.0:4566 mb s3://my-bucket
+
 	docker compose up --detach airflow-webserver --wait
-	@echo "Airflow has started. Go to http://localhost:8080. The password and user are 'airflow'"
+	@echo "Airflow has started. Go to http://0.0.0.0:8080. The password and user are 'airflow'"
 
 docker-cleanup: ## stop all docker components and clean up the images and volumes
 	docker compose down --volumes
