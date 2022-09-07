@@ -1,6 +1,6 @@
 # Data Ingestion Pipeline using LocalStack,Postgres,Airflow running in Docker Container
 
-##Architecture
+## Architecture
 We are using Kinesis Data steams to capture event streaming data. This is being processed using the AWS Lambda functions triggerd by kinesis event trigger. the lambda function will read data from data stream in batches and insert into 2 postgresql tables based on the corresponsing record it has received.
 
 * Scaling
@@ -27,6 +27,10 @@ Change directory within the repository and run `make start`. This will perform t
 	* Step-2 `terraform plan`
 	* Step-3 `terraform apply`
 	This will setup Kinesis stream, Lambda and Kinesis trigger in Localstack env using `create_aws.tf` file.
+
+## Insert data into Kinesis Data Stream 
+* Use `kinesis_generator/generate_kinesis_record.py` to generate Kinesis records.
+* It inserts one static JSON record. This can be modified for inserting records as JSON streams
 
 ## How to run the DAGs
 * Once everyting is up and running, navigate to Airflow UI http://localhost:8080
