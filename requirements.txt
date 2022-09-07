@@ -1,5 +1,0 @@
-black
-pytest
-pytest-env
-apache-airflow-providers-postgres
-apache-airflow==2.3.2
