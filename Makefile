@@ -25,10 +25,3 @@ create-venv: ## create a local virtual environment for python
 
 venv: create-venv install-requirements ## Create virtual environment + install packages
 
-linting-test: ## run linting checks
-	$(VENV_DIR)/bin/python -m black --check --diff --line-length 120 .
-
-unit-test: ## run unit tests
-	PYTHONPATH=./dags $(VENV_DIR)/bin/python -m pytest
-
-test: unit-test linting-test ## run all tests
